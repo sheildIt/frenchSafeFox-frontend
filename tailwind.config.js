@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        mainColor: "#1F2336",
         lightPurple: "#6652D5",
         darkBlue: "#25293D",
       },

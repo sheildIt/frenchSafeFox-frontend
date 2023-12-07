@@ -8,17 +8,18 @@ const GenerateEmail = () => {
         formGPT: <FormGPT />,
         imageComponent: <ImageComponent />,
 
-
       };
     
       const handleClick = (componentKey) => {
-        setSelectedComponent(componentKey);
+        setSelectedComponent((prevSelectedComponent) =>
+      prevSelectedComponent === componentKey ? null : componentKey
+    );
       };
 
   return (
     <div className='flex flex-col'>
-      <div className='flex-1 p-5'>
-        <h1 className='text-justify ml-5'>Generate some stuff..</h1>
+      <div className='flex-1 p-5 relative'>
+        <h3 className='text-justify ml-5'>Generate some stuff..</h3>
       </div>
       <div className="flex flex-row p-5 ml-5 relative">
         <div className='flex-none flex-col p-4 bg-black w-24 h-96 rounded-md'>

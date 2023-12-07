@@ -5,7 +5,8 @@ import CreateIcon from "../../assets/icons/menuIcons/createIcon";
 import HomeIcon from "../../assets/icons/menuIcons/HomeIcon";
 import GenerateEmail from "../../pages/Email/GenerateEmail";
 import EmailTemplate from "../../pages/Email/EmailTemplate";
-
+import ScenarioIcon from "../../assets/icons/menuIcons/ScenarioIcon";
+import ScenarioPage from "../../pages/Scenario/ScenarioPage/ScenarioPage";
 
 export const nav = [
   {
@@ -30,6 +31,14 @@ export const nav = [
     name: "Create",
     icon: <CreateIcon/>,
     element: <EmailTemplate />,
+    isMenu: true,
+  },
+  {
+    id: 3,
+    path: "/scenarios",
+    name: "Create",
+    icon: <ScenarioIcon/>,
+    element: <ScenarioPage />,
     isMenu: true,
   },
 ];

@@ -1,6 +1,7 @@
 import EmailIcon from "./menuIcons/emailIcon"
 import CreateIcon from "./menuIcons/createIcon"
 import HomeIcon from "./menuIcons/HomeIcon"
+import ScenarioIcon from "./menuIcons/ScenarioIcon"
 
 export const icons = {
     email:{id:1,
@@ -12,5 +13,9 @@ export const icons = {
     home:{
         id:3,
     element:<HomeIcon/>
+    },
+    scenario:{
+        id:4,
+    element:<ScenarioIcon/>
     },
 }
