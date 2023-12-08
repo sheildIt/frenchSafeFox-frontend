@@ -1,7 +1,13 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
+import useAxiosInstance from '../../auth/axios/axiosInstance';
+import { useRedux } from '../../constants/reduxImports';
 
 const CreateScenario = () => {
+    const axiosInstance = useAxiosInstance()
+    const {id} = useRedux() //companies id
+    const {currentUser} = useRedux()
+    const {currentToken} = useRedux()
     const navigate = useNavigate()
     const [name, setName] = useState()
     const [title, setTitle] = useState()
@@ -36,20 +42,22 @@ const CreateScenario = () => {
             "title":title,
             "POI":poi,
             "poi_email":emailPoi,
-            "company":1,
-            "user":1,
+            "company":id,
+            "user":currentUser,
             "scenario":scenario
         }
+
         // Make an API call to create the object with formData
-        try {
-          const response = await fetch('http://localhost:8000/company/create_scenario', {
-            method: 'POST',
+        // try {
+          const response = await axiosInstance.post('http://localhost:8000/company/create_scenario', 
+          formData,
+          {
             headers: {
               'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
+              "Authorization":"Bearer "+ String(currentToken)
+            }
           });
-          console.log(formData)
+
           if (response.status===201) {
             // Handle success, e.g., redirect or show a success message
             console.log('Object created successfully');
@@ -59,9 +67,9 @@ const CreateScenario = () => {
             // Handle error, e.g., show an error message
             console.error('Error creating object');
           }
-        } catch (error) {
-          console.error('Error:', error);
-        }
+        // } catch (error) {
+        //   console.error('Error:', error);
+        // }
       };
 
 

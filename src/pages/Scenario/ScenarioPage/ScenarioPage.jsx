@@ -1,11 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import './ScenarioPage.css'
 import { Link } from 'react-router-dom'
+import { useRedux } from '../../../constants/reduxImports'
+import useAxiosInstance from '../../../auth/axios/axiosInstance'
 
 const ScenarioPage = () => {
-
+  const {dispatch, currentToken} = useRedux()
   const [scenarios,setScenarios] = useState([])
-
+  const axiosInstance = useAxiosInstance()
   useEffect(()=>{
     getScenarios()
   },[])
@@ -13,13 +15,18 @@ const ScenarioPage = () => {
   console.log(scenarios)
   const getScenarios = async()=>{
     try {
-      let response = await fetch(`http://localhost:8000/company/get_scenarios/`)
+      let response = await axiosInstance.get(`http://localhost:8000/company/get_scenarios/`,{
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:"Bearer "+String(currentToken)
+        }
+      })
       if(response.status===200){
-        let data = await response.json()
-        setScenarios(data)
+        
+        setScenarios(response?.data)
       }
     } catch (error) {
-      
+      console.log(error)
     }
   }
 
