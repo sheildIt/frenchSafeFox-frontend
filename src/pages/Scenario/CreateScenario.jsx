@@ -5,9 +5,8 @@ import { useRedux } from '../../constants/reduxImports';
 
 const CreateScenario = () => {
     const axiosInstance = useAxiosInstance()
-    const {id} = useRedux() //companies id
-    const {currentUser} = useRedux()
-    const {currentToken} = useRedux()
+    const {currentCompanyId,currentToken} = useRedux() //companies id
+
     const navigate = useNavigate()
     const [name, setName] = useState()
     const [title, setTitle] = useState()
@@ -34,7 +33,7 @@ const CreateScenario = () => {
     const handleScenario = (e) =>{
         setScenario(e.target.value)
     }
-    
+    console.log('COMPANY',currentCompanyId)
       const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = {
@@ -42,8 +41,7 @@ const CreateScenario = () => {
             "title":title,
             "POI":poi,
             "poi_email":emailPoi,
-            "company":id,
-            "user":currentUser,
+            "company":currentCompanyId,
             "scenario":scenario
         }
 

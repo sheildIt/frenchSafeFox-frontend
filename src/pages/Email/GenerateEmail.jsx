@@ -1,57 +1,196 @@
-import React,{useState} from 'react'
-import FormGPT from '../../components/Generator/formGPT'
-import ImageComponent from '../../components/Image/ImageComponent'
+import React,{useState, useEffect} from 'react'
+import { useRedux } from '../../constants/reduxImports'
+import useAxiosInstance from '../../auth/axios/axiosInstance'
+import { config } from '../../constants/constants'
+import {useNavigate} from 'react-router-dom'
+
 const GenerateEmail = () => {
-    const [selectedComponent, setSelectedComponent] = useState(null);
-
-    const componentsMap = {
-        formGPT: <FormGPT />,
-        imageComponent: <ImageComponent />,
-
-      };
+    const {currentToken,currentDepartmentList, currentCompany} = useRedux()
+    const axiosInstance = useAxiosInstance()
+    const BASE_URL = config.url.BASE_URL
+    const navigate = useNavigate()
+    const API_KEY = "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";
+    const [loading, setLoading] = useState(false)
+    const [emailTemplate, setEmailTemplate] = useState(null);
+    const [emailBody, setEmailBody] = useState(null)
+    const [emailTitle, setEmailTitle] = useState(null)
+    const [scenario, setScenario] = useState({})
+    const [selectedScenario, setselectedScenario] = useState({})
+    const [scenarioObjects, setScenarioObjects] = useState([])
+    const [selectedDepartemnt, setSelectedDepartmend] = useState()
+    const [selectedDepartments, setSelectedDepartments] = useState([]);
+    const allSelection = {
+      "name":"All departments"
+    }
+    useEffect(()=>{
+      getScenarios()
+    },[])
     
-      const handleClick = (componentKey) => {
-        setSelectedComponent((prevSelectedComponent) =>
-      prevSelectedComponent === componentKey ? null : componentKey
-    );
+    const handleTemplate = (e) =>{
+        setEmailTemplate(e.target.value)
+    }
+    
+    const handleScenario = (e) =>{
+      setScenario(e.target.value)
+      setselectedScenario(JSON.parse(e.target.value))
+    }
+    console.log(selectedDepartments)
+    const handleDepartment = (e) => {
+      const selected = JSON.parse(e.target.value);
+      setSelectedDepartmend(selected); // Store the selected department object
+      console.log(selected)
+      if (selected.name === 'All departments') {
+        // If 'All' is selected, set the department state to all department IDs
+        const allDepartments = currentDepartmentList.departments.map((dept) => dept);
+        setSelectedDepartments(allDepartments);
+      } else {
+        // Otherwise, set the department state to the selected department object
+        setSelectedDepartments([selected]);
+      }
+    };
+
+    const getScenarios = async() =>{
+      try {
+        let response = await axiosInstance.get(`${BASE_URL}/company/get_scenarios`,{
+          method:'GET',
+          headers:{
+            "Content-Type":"application/json",
+            "Authorization": "Bearer " + String(currentToken)
+          }
+        })
+        if(response.status===200){
+          setScenarioObjects(response.data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+ 
+    const promtp_request = async () => {
+      setLoading(true);
+      const options = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [
+            {
+              role: "user",
+              content: `Write me an email without subjectline for ${selectedDepartemnt.department_name} in ${currentCompany} company based on the following scenario and keep it short:
+              ${selectedScenario.scenario}
+              `,
+            },
+          ],
+          max_tokens: 500,
+        }),
       };
+      try {
+        let response = await fetch(
+          "https://api.openai.com/v1/chat/completions",
+          options
+        );
+        if (response.status === 200) {
+          console.log(response);
+          const data = await response.json();
+          console.log(response)
+          setEmailBody(data.choices[0].message.content);
+          setEmailTitle(selectedScenario.title)
+          setLoading(false);
+        }
+      } catch (error) {
+        setLoading(false)
+        console.error(error);
+      }
+    };
+
+    const createEmail = async () =>{
+      const data = {
+        "template_type": emailTemplate,
+        "email_subjectline": selectedScenario.title,
+        "email_body": selectedScenario.scenario,
+        "scenario": selectedScenario.id,
+        "scheduled": false,
+        "email_sents": 0
+      }
+      let response = await axiosInstance.post(`${BASE_URL}/email_base/email_templates/`,
+      data
+      )
+      if(response.status===201){
+        console.log('success')
+        navigate('/')
+      }
+      else{
+        console.log('error')
+      }
+    }
 
   return (
     <div className='flex flex-col'>
       <div className='flex-1 p-5 relative'>
-        <h3 className='text-justify ml-5'>Generate some stuff..</h3>
+        <button className='flex-1 px-2 py-1 bg-green-700/50 absolute right-20' onClick={createEmail}>Create</button>
       </div>
       <div className="flex flex-row p-5 ml-5 relative">
-        <div className='flex-none flex-col p-4 bg-black w-24 h-96 rounded-md'>
-            <div className='flex-1 p-2 mb-3 bg-slate-100 rounded-md hover:bg-emerald-200 duration-300 cursor-pointer'>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-black mx-auto w-8 h-8"  onClick={()=>handleClick('formGPT')}>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33" />
-                </svg>
-            </div>
-            <div className='flex-1 p-2 mb-3 bg-slate-100 rounded-md hover:bg-emerald-200 duration-300 cursor-pointer'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-black mx-auto w-8 h-8" onClick={()=>handleClick('imageComponent')}>
-            <   path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            </div>
-            <div className='flex-1 p-2 bg-slate-100 rounded-md hover:bg-emerald-200 duration-300 cursor-pointer'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-black mx-auto w-8 h-8">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-            </svg>
-
-            </div>
-            <div className='flex-1 p-2 bg-slate-100 rounded-md hover:bg-emerald-200 duration-300 cursor-pointer my-32'>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-black mx-auto w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-            </svg>
-            </div>
+       <div className='flex-none border w-[40%] h-[100%] absolute top-10 rounded-lg'>
+          <div className='flex flex-col gap-5'>
+          <select
+              onChange={handleTemplate}
+              value={emailTemplate}
+              className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5'
+              placeholder='Choose Template Type'
+              required
+            >
+              <option value='' disabled>
+                Choose Template Type
+              </option>
+              <option value='Type1'>Standard Email</option>
+              <option value='Type2'>Phishing Email</option>
+          </select>
+          <select
+              onChange={handleScenario}
+              value={scenario}
+              className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5'
+              placeholder='Choose Template Type'
+              required
+            >
+              <option value=''>
+                Choose Scenario
+              </option>
+              {scenarioObjects?.map((scenario)=>{
+                return <option key={scenario.id} value={JSON.stringify(scenario)}>{scenario.name}</option>
+              })}
+          </select>
+          <h3>Select who will get this email below</h3>
+          <div className='flex flex-col'>
+          
+        <div class="flex-1 items-center">
+        <select
+                      onChange={handleDepartment}
+                      value={JSON.stringify(selectedDepartemnt)}
+                      className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5'
+                      placeholder='Choose Template Type'
+                      required
+                    >
+                      <option value={JSON.stringify(allSelection)}>
+                       All
+                      </option>
+                      {currentDepartmentList.departments.map((department)=>{
+                        return <option key={department.id} value={JSON.stringify(department)}>{department.department_name}</option>
+                      })}
+                  </select>
         </div>
-        <div className='flex-none'>
-        {selectedComponent && componentsMap[selectedComponent]}
-        </div>
-        <div className='flex w-[550px] h-[590px] bg-black/50 rounded-md p-10 absolute right-0 top-0'>
-            <div className='flex-1 bg-white w-[450px] h-[500px] rounded-md'>
 
-            </div>
+          </div>
+          <button className='bg-green-500' onClick={promtp_request}>{!loading ? <p>Generate</p>:<p>Processing..</p>}</button>
+          </div>
+          
+       </div>
+        
+        <div className='flex flex-col gap-10 w-[550px] h-[590px] rounded-md p-10 absolute right-20 top-10'>
+            <h2 className='text-xl text-white font-semibold text-justify'>{emailTitle}</h2>
+            <p>{emailBody}</p>
         </div>
       </div>
 

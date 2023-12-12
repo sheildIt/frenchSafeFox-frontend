@@ -3,9 +3,15 @@ import { useParams } from "react-router-dom";
 import { useRedux } from "../../constants/reduxImports";
 import {useNavigate} from "react-router-dom"
 import { setCompanyCredentials } from "../../auth/redux/companyReducer";
+import { setDepartments } from "../../auth/redux/departmentsReducer";
+import { setTemplates } from "../../auth/redux/templateReducer";
+import useAxiosInstance from "../../auth/axios/axiosInstance";
+import { config } from "../../constants/constants";
 
 const AuthModal = ({showModal, onClose,company}) => {
     const params = useParams();
+    const BASE_URL = config.url.BASE_URL
+    const axiosInstance = useAxiosInstance()
     const {dispatch} = useRedux()
     const [show, setShow] = useState(showModal);
     const navigate = useNavigate()
@@ -35,12 +41,18 @@ const AuthModal = ({showModal, onClose,company}) => {
   const handleAuthentication = () => {
     // Your authentication logic
     if(code==='test123'){
-        dispatch(setCompanyCredentials({...company}))
+
+        dispatch(setCompanyCredentials({...company.company}))
+        dispatch(setDepartments({...company.departments}))
         navigate(`/companyID/${company.id}`);
         setShow(false)
     }
   
   };
+
+  const templateAPI = async()=>{
+    let response = await axiosInstance.get(`${BASE_URL}/company/`)
+  }
 
   return (
     <>

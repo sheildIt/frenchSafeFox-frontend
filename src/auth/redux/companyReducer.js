@@ -5,17 +5,15 @@ const companyReducer = createSlice({
   initialState: {
     id: null,
     company_name: null,
-    departments: null,
   },
   reducers: {
     setCompanyCredentials: (state, action) => {
-      const { id, company_name, departments } = action.payload;
-      return { ...state, id, company_name, departments };
+      const { id, company_name } = action.payload;
+      return { ...state, id, company_name };
     },
     logOut: (state, action) => {
       state.id = null;
       state.company_name = null;
-      state.departments = null;
     },
   },
 });

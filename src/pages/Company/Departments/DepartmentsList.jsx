@@ -1,24 +1,28 @@
 import React from 'react'
 import './DepartmentsList.css'
-const DepartmentsList = () => {
+const DepartmentsList = ({departments}) => {
+
+
   return (
     <div>
       <div className="table">
       <div className="flex flex-row mb-2">
+      <div className="flex-1 text-white/50 opacity-0">Color</div>
         <div className="flex-1 text-white/50">Name</div>
         <div className="flex-1 text-white/50">Employees</div>
         <div className="flex-1 text-white/50">Incidents</div>
       </div>
-      <div className="flex flex-row mb-2">
-        <div className="flex-1">Marketing</div>
-        <div className="flex-1">10</div>
-        <div className="flex-1">2</div>
+      {departments?.map((department)=>{
+        const bgColorClass = `bg-${department.color}-400`;
+        console.log('Generated class:', bgColorClass);
+        return <div className="flex flex-row mb-2">
+        <div className={`flex-none w-[40px] h-[40px] ${bgColorClass} rounded-md`}></div>
+        <div className="flex-1 ml-28">{department.department_name}</div>
+        <div className="flex-1">tba</div>
+        <div className="flex-1">tba</div>
       </div>
-      <div className="flex flex-row mb-2">
-        <div className="flex-1">Finance</div>
-        <div className="flex-1">3</div>
-        <div className="flex-1">0</div>
-      </div>
+      })}
+
       
     </div>
     </div>

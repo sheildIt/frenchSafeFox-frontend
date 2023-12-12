@@ -6,10 +6,12 @@ import LoginPage from './pages/LoginPage';
 import CompanyPage from './pages/Company/CompanyPage'
 import Layout from './pages/Layout';
 import EmailDrafts from './pages/Email/EmailDrafts';
-import EmailTemplate from './pages/Email/EmailTemplate';
+import GenerateEmail from './pages/Email/GenerateEmail';
 import ScenarioPage from './pages/Scenario/ScenarioPage/ScenarioPage';
 import CreateScenario from './pages/Scenario/CreateScenario';
 import PrivateRoute from './auth/privateRoute/privateRoute';
+import Employees from './pages/Employees/Employees';
+
 
 function App() {
 
@@ -28,10 +30,11 @@ function App() {
    <Route path='companyID/:id' element={<CompanyPage/>} />
       {/* Email part */}
    <Route path='emailDrafts' element={<EmailDrafts/>} />
-   <Route path='templates/' element={<EmailTemplate/>} />
+   <Route path='/create_email' element={<GenerateEmail/>} />
    {/* Scenario part */}
    <Route path='scenarios/' element={<ScenarioPage/>} />
    <Route path='/create_scenario/' element={<CreateScenario/>} />
+   <Route path='/employees/' element={<Employees/>} />
    </Route>
    </Route>
    
