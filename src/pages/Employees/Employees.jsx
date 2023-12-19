@@ -3,7 +3,7 @@ import { useRedux } from '../../constants/reduxImports'
 import useAxiosInstance from '../../auth/axios/axiosInstance'
 
 const Employees = () => {
-const {currentDepartmentList,currentToken} = useRedux()
+const {currentDepartmentList,currentToken, currentCompanyId} = useRedux()
 const [clicked, isClicked] = useState()
 const [selected, setSelected] = useState([])
 const [dropdownVisible, setDropdownVisible] = useState(true);
@@ -37,7 +37,7 @@ const handleDepartmentSelection = (department) => {
 
 const fetchItemsFromAPI = async () => {
   // Use the selected department value to filter items
-  let apiEndpoint = `http://localhost:8000/company/employees_list/1/`;
+  let apiEndpoint = `http://localhost:8000/company/employees_list/${currentCompanyId}/`;
     
     // Check if a department is selected
     if (selected.length > 0) {

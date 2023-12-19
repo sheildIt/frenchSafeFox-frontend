@@ -5,7 +5,7 @@ import { useRedux } from '../../../constants/reduxImports'
 import useAxiosInstance from '../../../auth/axios/axiosInstance'
 
 const ScenarioPage = () => {
-  const {dispatch, currentToken} = useRedux()
+  const {currentCompanyId, currentToken} = useRedux()
   const [scenarios,setScenarios] = useState([])
   const axiosInstance = useAxiosInstance()
   useEffect(()=>{
@@ -15,7 +15,7 @@ const ScenarioPage = () => {
   console.log(scenarios)
   const getScenarios = async()=>{
     try {
-      let response = await axiosInstance.get(`http://localhost:8000/company/get_scenarios/`,{
+      let response = await axiosInstance.get(`http://localhost:8000/company/get_scenarios/${currentCompanyId}`,{
         headers:{
           "Content-Type":"application/json",
           Authorization:"Bearer "+String(currentToken)

@@ -5,7 +5,7 @@ import { config } from '../../constants/constants'
 import {useNavigate} from 'react-router-dom'
 
 const GenerateEmail = () => {
-    const {currentToken,currentDepartmentList, currentCompany} = useRedux()
+    const {currentToken,currentDepartmentList, currentCompany, currentCompanyId} = useRedux()
     const axiosInstance = useAxiosInstance()
     const BASE_URL = config.url.BASE_URL
     const navigate = useNavigate()
@@ -51,7 +51,7 @@ const GenerateEmail = () => {
 
     const getScenarios = async() =>{
       try {
-        let response = await axiosInstance.get(`${BASE_URL}/company/get_scenarios`,{
+        let response = await axiosInstance.get(`${BASE_URL}/company/get_scenarios/${currentCompanyId}`,{
           method:'GET',
           headers:{
             "Content-Type":"application/json",
@@ -110,17 +110,24 @@ const GenerateEmail = () => {
       const data = {
         "template_type": emailTemplate,
         "email_subjectline": selectedScenario.title,
-        "email_body": selectedScenario.scenario,
+        "email_body": emailBody,
         "scenario": selectedScenario.id,
         "scheduled": false,
-        "email_sents": 0
+        "email_sents": 0,
+        "company":currentCompanyId
       }
-      let response = await axiosInstance.post(`${BASE_URL}/email_base/email_templates/`,
-      data
+      let response = await axiosInstance.post(`${BASE_URL}/email_base/email_templates/${currentCompanyId}`,
+      data,
+      {
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":"Bearer " + String(currentToken)
+        }
+      }
       )
       if(response.status===201){
         console.log('success')
-        navigate('/')
+        navigate('/emailDrafts')
       }
       else{
         console.log('error')
