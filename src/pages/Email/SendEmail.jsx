@@ -15,12 +15,12 @@ const SendEmail = () => {
   const params = new URLSearchParams(search);
   const subject = params.get('subject');
   const message = params.get('message');
+  const uuid = params.get('uuid')
   const navigate = useNavigate()
   const [employees, setEmployees] = useState([])
   const [dateValue, setDateValue] = useState()
   const [timeValue, setTimeValue] = useState()
   const [selectedDep, setSelectedDep] = useState()
-console.log(subject, message)
 
   const fetchItemsFromAPI = async (dep_id) => {
     // Use the selected department value to filter items
@@ -68,7 +68,7 @@ console.log(subject, message)
       // Optionally, you can set an error state or show a message to the user
     }
   }
-  console.log(employees)
+
 
   const sendEmail = async () => {
     try {
@@ -82,8 +82,9 @@ console.log(subject, message)
       
       // Make a POST request to the Django API endpoint
       const response = await axiosInstance.post(
-        `${BASE_URL}/email_base/send_email`,
+        `${BASE_URL}/email_base/send_email/${uuid}`,
         {
+
           subject: subject,  // Replace with your subject
           message: message,  // Replace with your message
           recipient_list: recipientList,  // Replace with the actual recipient email

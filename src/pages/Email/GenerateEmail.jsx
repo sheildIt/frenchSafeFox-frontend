@@ -9,7 +9,7 @@ const GenerateEmail = () => {
     const axiosInstance = useAxiosInstance()
     const BASE_URL = config.url.BASE_URL
     const navigate = useNavigate()
-    const API_KEY = "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";
+    const API_KEY = import.meta.env.VITE_API_KEY;
     const [loading, setLoading] = useState(false)
     const [emailTemplate, setEmailTemplate] = useState(null);
     const [emailBody, setEmailBody] = useState(null)
@@ -34,11 +34,11 @@ const GenerateEmail = () => {
       setScenario(e.target.value)
       setselectedScenario(JSON.parse(e.target.value))
     }
-    console.log(selectedDepartments)
+
     const handleDepartment = (e) => {
       const selected = JSON.parse(e.target.value);
       setSelectedDepartmend(selected); // Store the selected department object
-      console.log(selected)
+
       if (selected.name === 'All departments') {
         // If 'All' is selected, set the department state to all department IDs
         const allDepartments = currentDepartmentList.departments.map((dept) => dept);
@@ -116,7 +116,7 @@ const GenerateEmail = () => {
         "email_sents": 0,
         "company":currentCompanyId
       }
-      let response = await axiosInstance.post(`${BASE_URL}/email_base/email_templates/${currentCompanyId}`,
+      let response = await axiosInstance.post(`${BASE_URL}/email_base/email_templates/${currentCompanyId}/`,
       data,
       {
         headers:{
@@ -126,11 +126,13 @@ const GenerateEmail = () => {
       }
       )
       if(response.status===201){
-        console.log('success')
+ 
+        setLoading(false);
         navigate('/emailDrafts')
       }
       else{
         console.log('error')
+        setLoading(false);
       }
     }
 

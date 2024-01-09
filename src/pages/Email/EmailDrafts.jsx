@@ -32,7 +32,7 @@ const EmailDrafts = () => {
     }
 
   }
-  console.log(selectedDraft)
+  console.log(emailDrafts)
   const handleSendButtonClick = (draft) => {
     setSelectedDraft(draft);
   };

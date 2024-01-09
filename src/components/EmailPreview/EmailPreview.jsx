@@ -5,19 +5,13 @@ import { useRedux } from '../../constants/reduxImports'
 const EmailPreview = ({email_body, email_title,onClose, email_id}) => {
 
 
-  const handleSendEmail = () => {
-    const emailData = {
-      subject: 'Your Subject',
-      message: 'Your Message',
-    };
-    navigate(`/send_email?subject=${email_title}&message=${email_body}`);
-  };
+
 
     const handleClose = () =>{
         onClose()
     }
 
-    console.log(email_body,email_title)
+
   return (
     <div className='flex-1 w-[40%] h-[100%] bg-white rounded-md p-10 relative'>
         <div className='absolute right-2 top-2'>
@@ -28,7 +22,7 @@ const EmailPreview = ({email_body, email_title,onClose, email_id}) => {
 
         </div>
         <div className='absolute right-8 top-2'>
-        <Link to={`/send_email?subject=${email_title}&message=${email_body}`}>
+        <Link to={`/send_email?uuid=${email_id}&subject=${email_title}&message=${email_body}`}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-black w-6 h-6 hover:bg-slate-400 duration-200 cursor-pointer rounded-md">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
 </svg></Link>
