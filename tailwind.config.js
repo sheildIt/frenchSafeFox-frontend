@@ -12,6 +12,8 @@ export default {
         lightPurple: "#6652D5",
         darkBlue: "#25293D",
         pagie: "#F8F3F3",
+        creme: "#D9D9D9",
+        grayLight: "#665B5B",
       },
     },
   },

@@ -3,13 +3,13 @@ import React from 'react'
 const Analytics = () => {
   return (
     <div className='flex flex-row p-5 rounded-md'>
-      <div className='flex-none p-5 bg-lightPurple rounded-lg w-64 h-80'>
+      <div className='flex-none p-5 bg-lightPurple rounded-lg w-64 h-80 shadow-2xl'>
         <p>Security index</p>
         <p>img</p>
         <p>incidents:12</p>
       </div>
       <div className='flex flex-col gap-3 ml-5'>
-        <div className='flex flex-row w-72 h-24 bg-darkBlue rounded-lg p-2 relative'>
+        <div className='flex flex-row w-72 h-24 bg-darkBlue rounded-lg p-2 relative shadow-2xl'>
             <div className='flex flex-col'>
             <p className='text-2xl text-white font-light'>Total Emails</p>
             <p className='text-5xl font-normal text-justify'>123</p>
@@ -18,7 +18,7 @@ const Analytics = () => {
               <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
         </div>
-        <div className='flex flex-row w-72 h-24 bg-darkBlue rounded-lg p-2 relative'>
+        <div className='flex flex-row w-72 h-24 bg-darkBlue rounded-lg p-2 relative shadow-2xl'>
         <div className='flex flex-col'>
             <p className='text-2xl text-white font-light'>Incident report</p>
             <p className='text-5xl font-normal text-justify'>123</p>
@@ -27,7 +27,7 @@ const Analytics = () => {
   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
 </svg>
 
-        </div><div className='flex flex-row w-72 h-24 bg-darkBlue rounded-lg p-2 relative'>
+        </div><div className='flex flex-row w-72 h-24 bg-darkBlue rounded-lg p-2 relative shadow-2xl'>
         <div className='flex flex-col'>
             <p className='text-2xl text-white font-light'>Total Users</p>
             <p className='text-5xl font-normal text-justify'>58</p>

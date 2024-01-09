@@ -45,7 +45,7 @@ const EmailDrafts = () => {
         <div className='flex-none w-[20%] h-[500px]'>
           <ul className='flex flex-col gap-4'>
             {emailDrafts?.map((email)=>{
-              return <li className='group flex-none w-full h-[100px] bg-white rounded-md hover:duration-200 hover:border-l-8 border-l-purple-600 hover:bg-white/50'>
+              return <li key={email.id} className='group flex-none w-full h-[100px] bg-white rounded-md hover:duration-200 hover:border-l-8 border-l-purple-600 hover:bg-white/50'>
                   <div className='flex flex-row'>
                       <div className='flex flex-col p-5 mt-3'>
                         <p className='text-black font-semibold text-start text-small'>{email.email_subjectline}</p>

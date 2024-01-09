@@ -13,7 +13,7 @@ import EmployeesIcon from "../../assets/icons/menuIcons/EmployeesIcon";
 export const nav = [
   {
     id: 1,
-    path: "companyID/:id",
+    path: "home",
     name: "/",
     icon: <HomeIcon/>,
     element: <CompanyPage />,

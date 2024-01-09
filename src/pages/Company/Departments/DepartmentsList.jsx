@@ -15,10 +15,10 @@ const DepartmentsList = ({departments}) => {
       {departments?.map((department)=>{
         const bgColorClass = `bg-${department.color}-400`;
         console.log('Generated class:', bgColorClass);
-        return <div className="flex flex-row mb-2">
+        return <div key={department.id} className="flex flex-row mb-2">
         <div className={`flex-none w-[40px] h-[40px] ${bgColorClass} rounded-md`}></div>
         <div className="flex-1 ml-28">{department.department_name}</div>
-        <div className="flex-1">tba</div>
+        <div className="flex-1">{department.number_of_employees}</div>
         <div className="flex-1">tba</div>
       </div>
       })}
