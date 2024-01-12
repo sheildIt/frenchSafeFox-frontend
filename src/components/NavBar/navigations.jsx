@@ -5,7 +5,6 @@ import CreateIcon from "../../assets/icons/menuIcons/createIcon";
 import HomeIcon from "../../assets/icons/menuIcons/HomeIcon";
 import GenerateEmail from "../../pages/Email/GenerateEmail";
 import Employees from "../../pages/Employees/Employees";
-import EmailTemplate from "../../pages/Email/EmailTemplate";
 import ScenarioIcon from "../../assets/icons/menuIcons/ScenarioIcon";
 import ScenarioPage from "../../pages/Scenario/ScenarioPage/ScenarioPage";
 import EmployeesIcon from "../../assets/icons/menuIcons/EmployeesIcon";
@@ -13,9 +12,9 @@ import EmployeesIcon from "../../assets/icons/menuIcons/EmployeesIcon";
 export const nav = [
   {
     id: 1,
-    path: "companyID/:id",
-    name: "/",
-    icon: <HomeIcon/>,
+    path: "home",
+    name: "Overview",
+    icon: <HomeIcon />,
     element: <CompanyPage />,
     isMenu: true,
   },
@@ -23,7 +22,7 @@ export const nav = [
     id: 2,
     path: "/emailDrafts",
     name: "Emails",
-    icon: <EmailIcon/>,
+    icon: <EmailIcon />,
     element: <EmailDrafts />,
     isMenu: true,
   },
@@ -31,7 +30,7 @@ export const nav = [
     id: 3,
     path: "/create_email",
     name: "Create",
-    icon: <CreateIcon/>,
+    icon: <CreateIcon />,
     element: <GenerateEmail />,
     isMenu: true,
   },
@@ -39,7 +38,7 @@ export const nav = [
     id: 4,
     path: "/scenarios",
     name: "Create",
-    icon: <ScenarioIcon/>,
+    icon: <ScenarioIcon />,
     element: <ScenarioPage />,
     isMenu: true,
   },
@@ -47,7 +46,7 @@ export const nav = [
     id: 5,
     path: "/employees/",
     name: "Employees",
-    icon: <EmployeesIcon/>,
+    icon: <EmployeesIcon />,
     element: <Employees />,
     isMenu: true,
   },

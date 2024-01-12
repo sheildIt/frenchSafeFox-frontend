@@ -44,7 +44,7 @@ const AuthModal = ({showModal, onClose,company}) => {
 
         dispatch(setCompanyCredentials({...company.company}))
         dispatch(setDepartments({...company.departments}))
-        navigate(`/companyID/${company.id}`);
+        navigate(`/home`);
         setShow(false)
     }
   

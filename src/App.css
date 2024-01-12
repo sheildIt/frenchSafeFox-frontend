@@ -3,11 +3,16 @@
   height: 100%;
   margin: 0 auto;
   text-align: center;
-  background-color: #1F2336;
+  background-color: #171430;
+
 
 }
 
 
 body{
   height: 100%;
+}
+
+.body-no-scroll {
+  overflow: hidden;
 }

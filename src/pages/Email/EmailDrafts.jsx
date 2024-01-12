@@ -3,6 +3,7 @@ import useAxiosInstance from '../../auth/axios/axiosInstance';
 import { useRedux } from '../../constants/reduxImports';
 import { config } from '../../constants/constants';
 import EmailPreview from '../../components/EmailPreview/EmailPreview';
+import DraftModal from '../../components/Modal/DraftModal';
 
 const EmailDrafts = () => {
   const BASE_URL = config.url.BASE_URL
@@ -10,6 +11,7 @@ const EmailDrafts = () => {
   const {currentToken,currentCompanyId} = useRedux()
   const [emailDrafts, setEmailDrafts] = useState([])
   const [selectedDraft, setSelectedDraft] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(()=>{
     getDrafts();
@@ -32,9 +34,15 @@ const EmailDrafts = () => {
     }
 
   }
-  console.log(selectedDraft)
+
   const handleSendButtonClick = (draft) => {
     setSelectedDraft(draft);
+    setShowModal(true)
+  };
+
+  const handleModalClose = () => {
+    setSelectedDraft(null);
+    setShowModal(false);
   };
   
   return (
@@ -45,7 +53,7 @@ const EmailDrafts = () => {
         <div className='flex-none w-[20%] h-[500px]'>
           <ul className='flex flex-col gap-4'>
             {emailDrafts?.map((email)=>{
-              return <li className='group flex-none w-full h-[100px] bg-white rounded-md hover:duration-200 hover:border-l-8 border-l-purple-600 hover:bg-white/50'>
+              return <li key={email.id} className='group flex-none w-full h-[100px] bg-white rounded-md hover:duration-200 hover:border-l-8 border-l-purple-600 hover:bg-white/50'>
                   <div className='flex flex-row'>
                       <div className='flex flex-col p-5 mt-3'>
                         <p className='text-black font-semibold text-start text-small'>{email.email_subjectline}</p>
@@ -60,13 +68,9 @@ const EmailDrafts = () => {
 
           </ul>
         </div>
-        {selectedDraft && (
-          <div className='flex-1 ml-5'>
-            {/* Display EmailPreview when selectedDraft is not null */}
-            <EmailPreview email_body={selectedDraft.email_body} email_title={selectedDraft.email_subjectline} email_id={selectedDraft.id} onClose={() => setSelectedDraft(null)} />
-          </div>
-        )}
+        
       </div>
+      <DraftModal confirmLeave={handleModalClose} showModal={showModal} email_obj={selectedDraft} />
     </div>
   )
 }
