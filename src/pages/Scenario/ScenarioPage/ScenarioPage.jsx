@@ -31,7 +31,7 @@ const ScenarioPage = () => {
   }
 
   return (
-    <div className='flex p-10 border h-[100%] rounded-md ml-5 relative'>
+    <div className='flex p-10 h-[100%] rounded-md ml-5 relative'>
         <div className='flex flex-row border w-[70%] rounded-md'>
         <div className="table">
       <div className="flex flex-row mb-2">

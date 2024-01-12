@@ -14,7 +14,25 @@ export default {
         pagie: "#F8F3F3",
         creme: "#D9D9D9",
         grayLight: "#665B5B",
+        purpleBlue: "#26233C",
       },
+    },
+    screens: {
+      "2xl": { min: "1735px" },
+      // => @media (max-width: 1535px) { ... }
+
+      xl: { min: "1579px" },
+      // => @media (max-width: 1279px) { ... }
+
+      lg: { min: "1023px" },
+      // => @media (max-width: 1023px) { ... }
+
+      md: { min: "767px" },
+      // => @media (max-width: 767px) { ... }
+
+      sm: { min: "639px" },
+      // => @media (max-width: 639px) { ... }
+      xs: { min: "420px" },
     },
   },
   plugins: [require("flowbite/plugin")],

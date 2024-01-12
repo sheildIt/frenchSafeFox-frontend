@@ -14,8 +14,7 @@ const CompanyView = () => {
   const axiosInstance = useAxiosInstance()
   const [show, setShow] = useState(false);
   const [showComp, setShowComp] = useState(false);
-  const [selectedCompany, setSelectedCompany] = useState({company: null,
-    departments: [],});
+  const [selectedCompany, setSelectedCompany] = useState({company: null,departments: [],});
   
   useEffect(() => {
     getCompanies();
