@@ -5,7 +5,7 @@ const DepartmentsList = ({ departments }) => {
   console.log(departments);
 
   return (
-    <div className="flex flex-col rounded-md">
+    <div className="flex flex-col rounded-md shadow-2xl">
       <p className="text-2xl font-bold text-white">
         Performance by departments
       </p>

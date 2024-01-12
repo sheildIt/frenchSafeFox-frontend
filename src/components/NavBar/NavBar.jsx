@@ -1,4 +1,3 @@
-import React from "react";
 import { nav } from "./navigations";
 import { Link } from "react-router-dom";
 import { useRedux } from "../../constants/reduxImports";
@@ -12,10 +11,10 @@ const NavBar = () => {
     dispatch(logOut());
     dispatch(cleanOut());
   };
-
+  console.log(nav);
   return (
     <div className="w-[10%]">
-      <div className="flex flex-col items-center justify-center border-r-2 h-[100%]">
+      <div className="flex flex-col items-center justify-center border-r-2 border-lightPurple/20 h-[100%]">
         <div className="flex items-center justify-center rounded-md p-4 text-blue-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,8 +36,13 @@ const NavBar = () => {
           <ul className="flex flex-col gap-5">
             {nav?.map((navItems) => {
               return (
-                <Link to={`${navItems.path}`} key={navItems.id}>
-                  {navItems.icon}
+                <Link
+                  to={`${navItems.path}`}
+                  key={navItems.id}
+                  className="hover:bg-slate-200 text-white hover:text-purple-700 cursor-pointer flex flex-row rounded-lg w-32 gap-2"
+                >
+                  <p>{navItems.icon}</p>
+                  <p className=" font-normal">{navItems.name}</p>
                 </Link>
               );
             })}

@@ -15,6 +15,7 @@ export default {
         creme: "#D9D9D9",
         grayLight: "#665B5B",
         purpleBlue: "#26233C",
+        mainBlue: "#171430",
       },
     },
     screens: {

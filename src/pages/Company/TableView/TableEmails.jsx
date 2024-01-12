@@ -2,7 +2,7 @@ import React from "react";
 import "./TableList.css";
 const TableEmails = ({ emails }) => {
   return (
-    <div className="flex-none bg-purpleBlue rounded-lg shadow-lg h-[150px]">
+    <div className="flex-none bg-purpleBlue rounded-lg shadow-2xl h-[150px]">
       <div className="table">
         <div className="flex flex-row mb-3 text-white/50 p-2 border-b border-lightPurple/20 mr-2 ml-2">
           <div className="flex-1">Theme</div>
