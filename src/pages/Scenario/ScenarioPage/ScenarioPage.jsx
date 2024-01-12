@@ -41,7 +41,7 @@ const ScenarioPage = () => {
       </div>
       
       {scenarios?.map((scenario)=>{
-        return <div className="flex flex-row mb-2">
+        return <div className="flex flex-row mb-2 text-white">
         <div className="flex-1">{scenario.name}</div>
         <div className="flex-1">{scenario.title}</div>
         <div className="flex-1">{scenario.created_at}</div>

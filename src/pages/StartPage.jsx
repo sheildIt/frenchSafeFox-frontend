@@ -5,7 +5,7 @@ const StartPage = () => {
   const formattedDate = currentDate.toISOString().split('T')[0];
   return (
     <div>
-      <h1 className="text-3xl font-extralight mb-24">
+      <h1 className="text-3xl text-white font-extralight mb-24">
       Hello! Welcome to SheildIt
       <DigitalClock/>
     <div className='relative'>

@@ -98,7 +98,7 @@ const CompanyView = () => {
       <StartPage/>
 <div className="flex flex-row p-10 border rounded-lg w-full">
   <div className="max-w-sm bg-gray-800 border border-gray-200 rounded-lg ml-3 w-36 h-40 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-sky-900 duration-300 cursor-pointer">
-  <svg xmlns="http://www.w3.org/2000/svg" onClick={openCompanyRegModal} fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mx-auto mt-14">
+  <svg xmlns="http://www.w3.org/2000/svg" onClick={openCompanyRegModal} fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white mx-auto mt-14">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
 </svg>
 

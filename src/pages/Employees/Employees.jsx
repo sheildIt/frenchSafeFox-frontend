@@ -112,7 +112,7 @@ const fetchItemsFromAPI = async () => {
             {employees?.map((employee)=>{
      
               
-              return <li key={employee.id} className='flex flex-row'>
+              return <li key={employee.id} className='flex flex-row text-white'>
                 <div className={`flex-none text-normal bg-${employee?.department.color}-400 w-[40px] h-[40px] rounded-md mb-2`}></div>
           <div className='flex-1 text-normal ml-32'>{employee.first_name}</div>
           <div className='flex-1 text-normal'>{employee.last_name}</div>

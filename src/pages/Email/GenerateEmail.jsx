@@ -169,7 +169,7 @@ const GenerateEmail = () => {
                 return <option key={scenario.id} value={JSON.stringify(scenario)}>{scenario.name}</option>
               })}
           </select>
-          <h3>Select who will get this email below</h3>
+          <h3 className='text-white'>Select who will get this email below</h3>
           <div className='flex flex-col'>
           
         <div class="flex-1 items-center">
@@ -190,14 +190,14 @@ const GenerateEmail = () => {
         </div>
 
           </div>
-          <button className='bg-green-500' onClick={promtp_request}>{!loading ? <p>Generate</p>:<p>Processing..</p>}</button>
+          <button className='bg-green-500 text-white' onClick={promtp_request}>{!loading ? <p className='text-white'>Generate</p>:<p>Processing..</p>}</button>
           </div>
           
        </div>
         
         <div className='flex flex-col gap-10 w-[550px] h-[590px] rounded-md p-10 absolute right-20 top-10'>
             <h2 className='text-xl text-white font-semibold text-justify'>{emailTitle}</h2>
-            <p>{emailBody}</p>
+            <p className='text-white'>{emailBody}</p>
         </div>
       </div>
 

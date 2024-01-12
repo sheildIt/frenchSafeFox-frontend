@@ -39,7 +39,7 @@ const EmailDrafts = () => {
   
   return (
     <div className='flex flex-col p-10 h-[100%]'>
-      <h1 className='text-justify text-3xl'>Email drafts</h1>
+      <h1 className='text-justify text-3xl text-white'>Email drafts</h1>
       <div className='flex flex-row text-justify text-white/50 font-light'>Drafts:<p className='ml-2'>{emailDrafts.length}</p></div>
       <div className='flex flex-row mt-5'>
         <div className='flex-none w-[20%] h-[500px]'>
