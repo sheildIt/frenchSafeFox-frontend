@@ -1,15 +1,16 @@
 const Analytics = () => {
   return (
-    <div className="flex flex-row rounded-md h-[100%]">
-      <div className="flex-none p-5 bg-lightPurple rounded-lg mt-2 w-56 h-[92%] xl:w-64 xl:h-[94%] shadow-2xl">
+    <div className="flex flex-row rounded-md">
+      <div className="flex-none p-5 bg-lightPurple rounded-lg w-56 h-64 xl:w-64 xl:h-80 shadow-2xl mt-2">
         <p>Security index</p>
         <p>img</p>
         <p>incidents:12</p>
       </div>
+
       <div className="flex flex-col gap-3 ml-5 mt-2 w-[100%]">
         <div className="flex flex-row w-60 h-[28.5%] xl:w-[100%] xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
           <div className="flex flex-col">
-            <p className="text-xl xl:text-2xl text-white font-light">
+            <p className="text-xl xl:text-2xl text-white font-light text-justify">
               Total Emails
             </p>
             <p className="text-3xl xl:text-5xl font-normal text-justify">123</p>
@@ -31,7 +32,7 @@ const Analytics = () => {
         </div>
         <div className="flex flex-row w-60 h-[28.5%] xl:w-68 xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
           <div className="flex flex-col">
-            <p className="text-xl xl:text-2xl text-white font-light">
+            <p className="text-xl xl:text-2xl text-white font-light text-justify">
               Incident report
             </p>
             <p className="text-3xl xl:text-5xl font-normal text-justify">123</p>
