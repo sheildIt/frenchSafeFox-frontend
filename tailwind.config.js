@@ -1,9 +1,10 @@
-/** @type {import('tailwindcss').Config} */
+import("tailwindcss").Config;
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/flowbite-react/lib/esm/**/*.js",
+    "node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {
@@ -16,6 +17,8 @@ export default {
         grayLight: "#665B5B",
         purpleBlue: "#26233C",
         mainBlue: "#171430",
+        cremeText: "#CBCBCB",
+        goldBrown: "#4A4A4A",
       },
     },
     screens: {
@@ -36,5 +39,6 @@ export default {
       xs: { min: "420px" },
     },
   },
+  // eslint-disable-next-line no-undef
   plugins: [require("flowbite/plugin")],
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRedux } from "../../constants/reduxImports";
 import useAxiosInstance from "../../auth/axios/axiosInstance";
 import { config } from "../../constants/constants";
@@ -10,7 +10,7 @@ const Employees = () => {
   const [openContact, setOpenContact] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [employees, setEmployees] = useState([]);
-  const [employeeID, setEmployeeID] = useState();
+
   const [employee, setEmployee] = useState();
   const axiosInstance = useAxiosInstance();
   const BASE_URL = config.url.BASE_URL;
@@ -63,12 +63,10 @@ const Employees = () => {
   const toggleEmployeeDrawer = (id) => {
     getEmployee(id);
     setOpenContact(true);
-    setEmployeeID(id);
   };
 
   const closeContactDrawer = () => {
     setOpenContact(false);
-    setEmployeeID();
   };
 
   const getEmployee = async (employee_id) => {
@@ -89,9 +87,9 @@ const Employees = () => {
       <div className="flex-1">
         <div className="flex flex-row p-2 relative">
           <h2 className="text-white font-normal text-3xl">Employees list</h2>
-          <div className="flex flex-row items-center bg-purpleBlue rounded-lg absolute right-0 shadow-2xl">
+          <div className="flex flex-row items-center bg-purpleBlue rounded-lg absolute right-0 shadow-2xl w-[28%]">
             <input
-              className="bg-mainBlue rounded-lg p-1.5 ml-0.5"
+              className="bg-mainBlue rounded-lg p-1.5 ml-0.5 w-[50%]"
               placeholder="Search by name.."
             />
             <button
@@ -245,7 +243,7 @@ const Employees = () => {
               : "translate-x-full"
           }`}
         >
-          <div className="flex flex-col text-justify p-4 relative items-center">
+          <div className="flex flex-col p-4 relative items-center">
             <button
               className="bg-mainBlue hover:bg-gray-700 duration-300 text-white px-2 py-1 rounded-full absolute right-3 top-3"
               onClick={closeContactDrawer}
@@ -254,18 +252,44 @@ const Employees = () => {
             </button>
             <p className="text-white text-xl mb-2">Employee view</p>
 
-            <div className="flex flex-col items-center p-4 w-full h-[150px] rounded-lg">
+            <div className="flex flex-col items-center gap-2 p-4 w-full mx-5 h-[150px] rounded-lg">
               <div className="flex flex-col gap-3 relative">
                 <img
                   className="w-24 h-24 mb-3 rounded-full shadow-lg"
                   src="/images/user.jpg"
                   alt="Bonnie image"
                 />
-                <h5 className="mb-1 text-xl font-medium text-white dark:text-white">
-                  {employee?.first_name}
+              </div>
+              <div className="flex flex-row items-center w-full relative">
+                <h5 className="text-normal xl:text-xl font-normal text-white/50 dark:text-white">
+                  #ID
                 </h5>
-                <span className="text-sm text-white/50 dark:text-gray-400">
-                  Visual Designer
+                <span className="text-normal xl:text-xl text-white dark:text-gray-400 absolute right-0">
+                  {employee?.id}
+                </span>
+              </div>
+              <div className="flex flex-row items-center w-full relative">
+                <h5 className="text-normal xl:text-xl font-normal text-white/50 dark:text-white">
+                  First name
+                </h5>
+                <span className="text-normal xl:text-xl text-white dark:text-gray-400 absolute right-0">
+                  {employee?.first_name}
+                </span>
+              </div>
+              <div className="flex flex-row items-center w-full relative">
+                <h5 className="text-normal xl:text-xl font-normal text-white/50 dark:text-white">
+                  Last name
+                </h5>
+                <span className="text-normal xl:text-xl text-white dark:text-gray-400 absolute right-0">
+                  {employee?.last_name}
+                </span>
+              </div>
+              <div className="flex flex-row items-center w-full relative">
+                <h5 className="text-normal xl:text-xl font-normal text-white/50 dark:text-white">
+                  Department
+                </h5>
+                <span className="text-normal xl:text-xl text-white dark:text-gray-400 absolute right-0">
+                  {employee?.department.department_name}
                 </span>
               </div>
               {/* <button

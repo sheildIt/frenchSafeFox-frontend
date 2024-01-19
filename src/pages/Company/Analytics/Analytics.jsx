@@ -1,15 +1,13 @@
-import React from "react";
-
 const Analytics = () => {
   return (
-    <div className="flex flex-row rounded-md">
-      <div className="flex-none p-5 bg-lightPurple rounded-lg w-56 h-68 xl:w-64 xl:h-80 shadow-2xl">
+    <div className="flex flex-row rounded-md h-[100%]">
+      <div className="flex-none p-5 bg-lightPurple rounded-lg mt-2 w-56 h-[92%] xl:w-64 xl:h-[94%] shadow-2xl">
         <p>Security index</p>
         <p>img</p>
         <p>incidents:12</p>
       </div>
-      <div className="flex flex-col gap-3 ml-5">
-        <div className="flex flex-row w-60 h-20 xl:w-68 xl:h-24 bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
+      <div className="flex flex-col gap-3 ml-5 mt-2 w-[100%]">
+        <div className="flex flex-row w-60 h-[28.5%] xl:w-[100%] xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
           <div className="flex flex-col">
             <p className="text-xl xl:text-2xl text-white font-light">
               Total Emails
@@ -31,7 +29,7 @@ const Analytics = () => {
             />
           </svg>
         </div>
-        <div className="flex flex-row w-60 h-20 xl:w-68 xl:h-24 bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
+        <div className="flex flex-row w-60 h-[28.5%] xl:w-68 xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
           <div className="flex flex-col">
             <p className="text-xl xl:text-2xl text-white font-light">
               Incident report
@@ -53,7 +51,7 @@ const Analytics = () => {
             />
           </svg>
         </div>
-        <div className="flex flex-row w-60 h-20 xl:w-68 xl:h-24 bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
+        <div className="flex flex-row w-60 h-[28.5%] xl:w-68 xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
           <div className="flex flex-col">
             <p className="text-xl xl:text-2xl text-white font-light">
               Total Users
