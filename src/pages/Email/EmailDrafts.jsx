@@ -50,7 +50,7 @@ const EmailDrafts = () => {
   };
 
   return (
-    <div className="flex flex-col p-10 h-screen mx-10">
+    <div className="flex flex-col p-10 mx-10">
       <div className="flex flex-row relative">
         <div className="flex-1 h-28">
           <div className="flex flex-row text-justify relative">
@@ -95,7 +95,7 @@ const EmailDrafts = () => {
           Filter by Date
         </div>
       </div>
-      <div className="flex flex-row mt-2 h-screen">
+      <div className="flex flex-row mt-2">
         <div className="flex-none h-[100%] w-[100%] bg-purpleBlue p-5 rounded-lg shadow-xl overflow-auto">
           <ul className="flex flex-wrap gap-4">
             {emailDrafts?.map((email) => {

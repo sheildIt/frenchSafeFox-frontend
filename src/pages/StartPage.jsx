@@ -2,7 +2,7 @@ import DigitalClock from "../components/DigitalClock";
 const StartPage = () => {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split("T")[0];
-  console.log("S");
+
   return (
     <div>
       <h1 className="text-3xl mb-24">

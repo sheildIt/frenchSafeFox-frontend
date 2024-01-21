@@ -4,7 +4,12 @@ import useAxiosInstance from "../../auth/axios/axiosInstance";
 import { config } from "../../constants/constants";
 
 const Employees = () => {
-  const { currentDepartmentList, currentToken, currentCompanyId } = useRedux();
+  const {
+    currentDepartmentList,
+    currentToken,
+    currentCompanyId,
+    currentCompany,
+  } = useRedux();
 
   const [selected, setSelected] = useState([]);
   const [openContact, setOpenContact] = useState(false);
@@ -85,8 +90,16 @@ const Employees = () => {
   return (
     <div className="flex flex-col p-10 mx-10">
       <div className="flex-1">
-        <div className="flex flex-row p-2 relative">
-          <h2 className="text-white font-normal text-3xl">Employees list</h2>
+        <div className="flex flex-row relative">
+          <div className="flex flex-row text-justify relative">
+            <h2 className="text-3xl flex flex-row ml-2 font-normal">
+              Employees |
+              <p className="text-lightPurple ml-2">{currentCompany}</p>
+            </h2>
+            {/* <div className="flex flex-row bg-purpleBlue text-creme text-lg p-2 rounded-lg shadow-xl absolute right-0">
+            Refresh
+          </div> */}
+          </div>
           <div className="flex flex-row items-center bg-purpleBlue rounded-lg absolute right-0 shadow-2xl w-[28%]">
             <input
               className="bg-mainBlue rounded-lg p-1.5 ml-0.5 w-[50%]"
@@ -237,7 +250,7 @@ const Employees = () => {
           </div>
         </div>
         <div
-          className={`absolute top-[130px] right-0 h-[526px] w-[340px] xl:h-[648px] xl:w-[440px] shadow-2xl bg-purpleBlue rounded-2xl transition-transform transform ${
+          className={`absolute top-[115px] right-0 h-[526px] w-[340px] xl:h-[648px] xl:w-[440px] shadow-2xl bg-purpleBlue rounded-2xl transition-transform transform ${
             openContact
               ? "xl:-translate-x-22 -translate-x-20"
               : "translate-x-full"

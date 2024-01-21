@@ -20,6 +20,7 @@ const GenerateEmail = () => {
   const [emailBody, setEmailBody] = useState(null);
   const [emailTitle, setEmailTitle] = useState(null);
   const [scenario, setScenario] = useState({});
+  const [url, setUrl] = useState();
   const [selectedScenario, setselectedScenario] = useState({});
   const [scenarioObjects, setScenarioObjects] = useState([]);
   const [selectedDepartemnt, setSelectedDepartmend] = useState();
@@ -36,6 +37,10 @@ const GenerateEmail = () => {
 
   const handleTemplate = (e) => {
     setEmailTemplate(e.target.value);
+  };
+
+  const handleUrl = (e) => {
+    setUrl(e.target.value);
   };
 
   const handleEmailType = (e) => {
@@ -139,6 +144,7 @@ const GenerateEmail = () => {
       email_subjectline: selectedScenario.title,
       email_body: emailBody,
       email_type: emailType,
+      friendly_url: url,
       scenario: selectedScenario.id,
       email_theme: selectedScenario.name,
       scheduled: false,
@@ -216,6 +222,12 @@ const GenerateEmail = () => {
                 );
               })}
             </select>
+            <input
+              onChange={handleUrl}
+              type="text"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5"
+              placeholder="Insert a target link.."
+            />
             <h3>Select who will get this email below</h3>
             <div className="flex flex-col">
               <div className="flex-1 items-center">

@@ -1,4 +1,6 @@
-const NewsComponent = () => {
+import { useState } from "react";
+
+const NewsComponent = ({ viewType }) => {
   const news = [
     {
       id: 1,
@@ -23,38 +25,77 @@ const NewsComponent = () => {
 
   return (
     <div className="flex flex-col">
-      <p className="text-2xl font-bold text-white">News</p>
-      <ul className="flex flex-col mt-5 bg-purpleBlue w-[250px] h-[250px] xl:h-[300px] shadow-xl p-5 rounded-lg">
-        {news.map((newItem) => {
-          return (
-            <div
-              key={newItem.id}
-              className="flex flex-row p-2 relative hover:bg-slate-600 duration-300 cursor-pointer rounded-lg"
-            >
-              <li className="border-b border-lightPurple/20">
-                <p className="text-xs xl:text-normal mb-1">{newItem.title}</p>
-                <p className="text-xs xl:text-normal mb-1 text-white/50 overflow-hidden overflow-ellipsis">
-                  {truncateText(newItem.body, 40)}
-                </p>
-              </li>
+      {viewType === "Overview" ? (
+        <p className="text-2xl font-bold text-white">News</p>
+      ) : (
+        <p></p>
+      )}
+      {viewType === "Overview" ? (
+        <ul className="flex flex-col mt-5 bg-purpleBlue w-[250px] h-[250px] xl:h-[300px] shadow-xl p-2 gap-2 rounded-lg">
+          {news.map((newItem) => {
+            return (
+              <div
+                key={newItem.id}
+                className="max-w-sm w-30 h-20 lg:max-w-full lg:flex bg-mainBlue rounded-xl hover:bg-purple-600 cursor-pointer duration-200"
+              >
+                <div className="p-2 mb-2 flex-col justify-between leading-normal">
+                  <div className="text-creme font-normal text-sm mb-2">
+                    {newItem.title}
+                  </div>
+                  <p className="text-white/50 text-xs">
+                    {truncateText(newItem.body, 40)}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </ul>
+      ) : (
+        <div className="flex-1 mx-3">
+          <ul className="flex flex-col mt-2 w-full h-[260px] xl:h-[460px] p-2 gap-3 rounded-lg">
+            {news.map((newItem) => {
+              return (
+                <div
+                  key={newItem.id}
+                  className="flex flex-row w-full hover:bg-purple-600 cursor-pointer duration-200 rounded-lg"
+                >
+                  <img
+                    src="/images/1366.jpg"
+                    className="rounded-lg w-28 xl:w-52"
+                  />
+                  <div className="flex flex-col ml-2 text-start">
+                    <p className="text-white/75 text-base">{newItem.title}</p>
+                    <p className="text-white/50 text-sm">
+                      {truncateText(newItem.body, 70)}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </ul>
+          <div className="flex flex-row gap-2 mt-2 ml-2">
+            <button className="mt-2 px-3 py-1 text-sm xl:text-base bg-purple-700 hover:bg-purple-500 duration-200">
+              Generate
+            </button>
+            <div className="mt-2 px-3 py-1 text-sm xl:text-base bg-purple-700 hover:bg-purple-500 duration-200 cursor-pointer rounded-xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth="1.0"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-5 h-5 xl:w-6 xl:h-6"
+                className="w-6 h-6"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                 />
               </svg>
             </div>
-          );
-        })}
-      </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

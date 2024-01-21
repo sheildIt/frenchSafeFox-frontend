@@ -55,7 +55,7 @@ const CompanyPage = () => {
         </div>
 
         <div className="text-justify">
-          <NewsComponent />
+          <NewsComponent viewType={"Overview"} />
         </div>
       </div>
 
