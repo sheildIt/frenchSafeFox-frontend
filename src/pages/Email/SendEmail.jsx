@@ -178,7 +178,7 @@ const SendEmail = () => {
   return (
     <div className="flex flex-col p-5 mx-10 h-screen">
       <div className="flex flex-row relative p-5">
-        <h2 className="text-justify text-2xl">Send email</h2>
+        <h2 className="text-justify text-white text-2xl">Send email</h2>
       </div>
       <div className="flex flex-row p-5">
         <div className="bg-white w-[30%] h-[120%] rounded-2xl flex flex-col p-5 relative">

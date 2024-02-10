@@ -88,11 +88,11 @@ const Employees = () => {
   };
 
   return (
-    <div className="flex flex-col p-10 mx-10">
+    <div className="flex flex-col p-10">
       <div className="flex-1">
         <div className="flex flex-row relative">
           <div className="flex flex-row text-justify relative">
-            <h2 className="text-3xl flex flex-row ml-2 font-normal">
+            <h2 className="text-3xl text-white flex flex-row ml-2 font-normal">
               Employees |
               <p className="text-lightPurple ml-2">{currentCompany}</p>
             </h2>
@@ -100,7 +100,7 @@ const Employees = () => {
             Refresh
           </div> */}
           </div>
-          <div className="flex flex-row items-center bg-purpleBlue rounded-lg absolute right-0 shadow-2xl w-[28%]">
+          <div className="flex flex-row items-center bg-purpleBlue rounded-lg absolute right-0 shadow-2xl w-[30%]">
             <input
               className="bg-mainBlue rounded-lg p-1.5 ml-0.5 w-[50%]"
               placeholder="Search by name.."
@@ -112,7 +112,7 @@ const Employees = () => {
               className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
               type="button"
             >
-              Filter by category
+              Filter
               <svg
                 className="w-4 h-4 ml-2"
                 aria-hidden="true"
@@ -170,10 +170,10 @@ const Employees = () => {
 
         <div
           className={`mainContainer transition-width overflow-none ${
-            openContact ? "w-[70%]" : "w-full"
+            openContact ? "w-[68%]" : "w-full"
           }`}
         >
-          <div className="flex flex-col w-full mt-10 p-5 bg-purpleBlue rounded-xl h-[400px] shadow-2xl">
+          <div className="flex text-white flex-col w-full mt-10 p-5 bg-purpleBlue rounded-xl h-[400px] shadow-2xl">
             <div className="flex flex-row mb-2 w-full">
               <div className="flex-1 text-white/50">#ID</div>
               <div className="flex-1 text-white/50">First Name</div>
@@ -250,9 +250,9 @@ const Employees = () => {
           </div>
         </div>
         <div
-          className={`absolute top-[115px] right-0 h-[526px] w-[340px] xl:h-[648px] xl:w-[440px] shadow-2xl bg-purpleBlue rounded-2xl transition-transform transform ${
+          className={`absolute top-[115px] right-0 h-[526px] w-[365px] xl:h-[648px] xl:w-[440px] shadow-2xl bg-purpleBlue rounded-2xl transition-transform transform ${
             openContact
-              ? "xl:-translate-x-22 -translate-x-20"
+              ? "xl:-translate-x-22 -translate-x-[11%]"
               : "translate-x-full"
           }`}
         >

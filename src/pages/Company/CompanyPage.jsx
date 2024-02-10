@@ -33,10 +33,10 @@ const CompanyPage = () => {
   };
 
   return (
-    <div className="flex flex-col p-10 mx-10">
+    <div className="flex flex-col p-10">
       <div className="flex-1 h-28">
         <div className="flex flex-row text-justify relative">
-          <h2 className="text-3xl flex flex-row ml-2 font-normal">
+          <h2 className="text-3xl text-white flex flex-row font-normal">
             Home dashboard |
             <p className="text-lightPurple ml-2">{currentCompany}</p>
           </h2>
@@ -61,7 +61,7 @@ const CompanyPage = () => {
 
       <div className="flex-1">
         <div className="flex flex-row relative">
-          <p className="text-2xl font-bold text-justify">
+          <p className="text-2xl text-white font-bold text-justify">
             Live Emails{" "}
             <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-red-600 opacity-80"></span>
           </p>
