@@ -10,10 +10,10 @@ const Analytics = () => {
       <div className="flex flex-col gap-3 ml-5 mt-2 w-[100%]">
         <div className="flex flex-row w-60 h-[28.5%] xl:w-[100%] xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
           <div className="flex flex-col">
-            <p className="text-xl xl:text-2xl text-white font-light text-justify">
+            <p className="text-xl text-white xl:text-2xl text-white font-light text-justify">
               Total Emails
             </p>
-            <p className="text-3xl xl:text-5xl font-normal text-justify">123</p>
+            <p className="text-3xl text-white xl:text-5xl font-normal text-justify">123</p>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ const Analytics = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-8 h-8 xl:w-10 xl:h-10 absolute right-5 top-5"
+            className="w-8 h-8 xl:w-10 text-white xl:h-10 absolute right-5 top-5"
           >
             <path
               strokeLinecap="round"
@@ -32,10 +32,10 @@ const Analytics = () => {
         </div>
         <div className="flex flex-row w-60 h-[28.5%] xl:w-68 xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
           <div className="flex flex-col">
-            <p className="text-xl xl:text-2xl text-white font-light text-justify">
+            <p className="text-xl text-white xl:text-2xl text-white font-light text-justify">
               Incident report
             </p>
-            <p className="text-3xl xl:text-5xl font-normal text-justify">123</p>
+            <p className="text-3xl text-white xl:text-5xl font-normal text-justify">123</p>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ const Analytics = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-8 h-8 xl:w-10 xl:h-10 absolute right-5 top-5"
+            className="w-8 h-8 text-white xl:w-10 xl:h-10 absolute right-5 top-5"
           >
             <path
               strokeLinecap="round"
@@ -54,10 +54,10 @@ const Analytics = () => {
         </div>
         <div className="flex flex-row w-60 h-[28.5%] xl:w-68 xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
           <div className="flex flex-col">
-            <p className="text-xl xl:text-2xl text-white font-light">
+            <p className="text-xl  xl:text-2xl text-white font-light">
               Total Users
             </p>
-            <p className="text-3xl xl:text-5xl font-normal text-justify">58</p>
+            <p className="text-3xl text-white xl:text-5xl font-normal text-justify">58</p>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@ const Analytics = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-8 h-8 xl:w-10 xl:h-10 absolute right-5 top-5"
+            className="w-8 h-8 text-white xl:w-10 xl:h-10 absolute right-5 top-5"
           >
             <path
               strokeLinecap="round"

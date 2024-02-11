@@ -5,7 +5,7 @@ const StartPage = () => {
 
   return (
     <div>
-      <h1 className="text-3xl mb-24">
+      <h1 className="text-3xl mb-24 text-white">
         Hello! Welcome to SheildIt
         <DigitalClock />
         <div className="relative">

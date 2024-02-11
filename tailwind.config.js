@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         mainColor: "#1F2336",
+        darkPurle:'#171430',
         lightPurple: "#6652D5",
         darkBlue: "#25293D",
         pagie: "#F8F3F3",

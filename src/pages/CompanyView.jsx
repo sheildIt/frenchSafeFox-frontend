@@ -84,7 +84,7 @@ const CompanyView = () => {
   };
 
   return (
-    <div className="flex-1 p-10">
+    <div className="p-10">
       <p className="flex items-start">
         <svg
           xmlns="http://www.w3.org/2000/svg"

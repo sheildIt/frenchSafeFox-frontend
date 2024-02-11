@@ -11,10 +11,10 @@ const NavBar = () => {
     dispatch(logOut());
     dispatch(cleanOut());
   };
-  console.log(nav);
+
   return (
-    <div className="w-[10%]">
-      <div className="flex flex-col items-center justify-center border-r-2 border-lightPurple/20 h-[100%]">
+   
+      <div className="flex flex-col items-center justify-center border-r-2 border-lightPurple/20 h-[100%] w-[10%]">
         <div className="flex items-center justify-center rounded-md p-4 text-blue-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 

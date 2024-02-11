@@ -50,11 +50,11 @@ const EmailDrafts = () => {
   };
 
   return (
-    <div className="flex flex-col p-10 mx-10">
+    <div className="flex flex-col p-10">
       <div className="flex flex-row relative">
         <div className="flex-1 h-28">
           <div className="flex flex-row text-justify relative">
-            <h2 className="text-3xl flex flex-row ml-2 font-normal">
+            <h2 className="text-3xl text-white flex flex-row ml-2 font-normal">
               Email documents |
               <p className="text-lightPurple ml-2">{currentCompany}</p>
             </h2>
@@ -67,7 +67,7 @@ const EmailDrafts = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6 hover:bg-purple-500 duration-200 cursor-pointer rounded-lg"
+            className="w-6 h-6 text-white hover:bg-purple-500 duration-200 cursor-pointer rounded-lg"
           >
             <path
               strokeLinecap="round"
@@ -82,7 +82,7 @@ const EmailDrafts = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6 hover:bg-purple-500 duration-200 cursor-pointer rounded-lg"
+            className="w-6 h-6 text-white hover:bg-purple-500 duration-200 cursor-pointer rounded-lg"
           >
             <path
               strokeLinecap="round"
@@ -91,7 +91,7 @@ const EmailDrafts = () => {
             />
           </svg>
         </div>
-        <div className="bg-purpleBlue flex flex-row w-[10%] p-2 py-2 justify-center items-center shadow-xl absolute right-[12%] top-2 hover:bg-purple-500 duration-200 cursor-pointer rounded-lg">
+        <div className="bg-purpleBlue text-white flex flex-row w-[10%] p-2 py-2 justify-center items-center shadow-xl absolute right-[12%] top-2 hover:bg-purple-500 duration-200 cursor-pointer rounded-lg">
           Filter by Date
         </div>
       </div>

@@ -252,13 +252,13 @@ const GenerateEmail = () => {
                 </select>
               </div>
             </div>
-            <button className="bg-green-500" onClick={promtp_request}>
+            <button className="bg-green-500 text-white" onClick={promtp_request}>
               {!loading ? <p>Generate</p> : <p>Processing..</p>}
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col gap-10 w-[550px] h-[590px] rounded-md p-10 absolute right-20 top-10">
+        <div className="flex text-white flex-col gap-10 w-[550px] h-[590px] rounded-md p-10 absolute right-20 top-10">
           <h2 className="text-xl text-white font-semibold text-justify">
             {emailTitle}
           </h2>
