@@ -3,7 +3,7 @@ import "./TableList.css";
 
 const TableEmails = ({ emails }) => {
   return (
-    <div className="flex-none bg-purpleBlue rounded-lg shadow-2xl h-[200px]">
+    <div className="flex-1 bg-purpleBlue rounded-lg shadow-2xl h-[200px]">
       <div className="table">
         <div className="flex flex-row text-white p-2 ml-2">
           <div className="flex-1">Theme</div>

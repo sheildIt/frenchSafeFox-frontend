@@ -44,10 +44,10 @@ const EmailDrafts = () => {
     setSelectedDraft(null);
     setShowModal(false);
   };
-
-  const truncateText = (text, limit) => {
-    return text.length > limit ? text.slice(0, limit) + "..." : text;
-  };
+  console.log(selectedDraft);
+  // const truncateText = (text, limit) => {
+  //   return text.length > limit ? text.slice(0, limit) + "..." : text;
+  // };
 
   return (
     <div className="flex flex-col p-10">
@@ -121,9 +121,7 @@ const EmailDrafts = () => {
                         />
                       </svg>
 
-                      <p className="text-black font-sans text-start text-small ml-2">
-                        {truncateText(email.email_subjectline, 15)}
-                      </p>
+                      <p className="text-black font-sans text-start text-small ml-2"></p>
 
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

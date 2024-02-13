@@ -1,29 +1,36 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import useAxiosInstance from "../../auth/axios/axiosInstance";
+import { config } from "../../constants/constants";
 
 const DraftModal = ({ confirmLeave, showModal, email_obj }) => {
   const handleClose = () => {
     confirmLeave();
   };
+  const axiosInstance = useAxiosInstance();
+  const BASE_URL = config.url.BASE_URL;
 
-  const editableRef = useRef(null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedBody, setEditedBody] = useState();
+  const [emailObj, setEmailObj] = useState({
+    email_text: "",
+    email_subjectline: "",
+  });
   useEffect(() => {
-    // Set the initial body when email_obj changes
-    setEditedBody(email_obj?.email_body || "");
+    if (email_obj?.id) {
+      getElementsBody();
+    }
   }, [email_obj]);
-  const handleEditToggle = () => {
-    setIsEditing(!isEditing);
-    if (!isEditing) {
-      editableRef.current.focus();
+
+  useEffect(() => {}, [emailObj]);
+
+  const getElementsBody = async () => {
+    let response = await axiosInstance.get(
+      `${BASE_URL}/email_base/email_elements/${email_obj?.id}`
+    );
+    if (response.status === 200) {
+      setEmailObj(response.data[0]);
     }
   };
-  console.log(email_obj);
-  const handleInputChange = (e) => {
-    setEditedBody(editableRef.current.innerText);
-  };
-
+  console.log(emailObj);
   return (
     <div
       className={`fixed inset-0 ${
@@ -52,23 +59,19 @@ const DraftModal = ({ confirmLeave, showModal, email_obj }) => {
           </div>
           <div className="flex flex-row">
             <div
-              ref={editableRef}
-              className={`flex flex-col w-[400px] h-[550px] text-black font-semibold bg-creme shadow-lg p-5 rounded-md overflow-y-auto ${
-                isEditing ? "border border-blue-500" : ""
-              }`}
-              contentEditable={isEditing}
-              onInput={handleInputChange}
-              dangerouslySetInnerHTML={{ __html: editedBody }}
-            ></div>
+              className={`flex flex-col w-[400px] h-[550px] text-black font-semibold bg-creme shadow-lg p-5 rounded-md overflow-y-auto`}
+            >
+              {emailObj ? emailObj.email_text : "Loading..."}
+            </div>
             <div className="flex flex-col gap-2 bg-darkBlue rounded-md ml-4 p-2">
-              <button
-                className="bg-creme text-grayLight"
-                onClick={handleEditToggle}
-              >
-                {isEditing ? "Save" : "Open Editor"}
-              </button>
               <Link
-                to={`/send_email?uuid=${email_obj?.id}&subject=${email_obj?.email_subjectline}&message=${email_obj?.email_body}`}
+                className="bg-creme text-grayLight"
+                to={`/edit/${email_obj?.id}`}
+              >
+                Open Editor
+              </Link>
+              <Link
+                to={`/send_email?uuid=${email_obj?.id}&subject=${emailObj?.email_text}&message=${emailObj?.email_text}`}
                 className="bg-creme text-grayLight px-2 py-1 rounded-lg"
               >
                 Send

@@ -141,8 +141,6 @@ const GenerateEmail = () => {
   const createEmail = async () => {
     const data = {
       template_type: emailTemplate,
-      email_subjectline: selectedScenario.title,
-      email_body: emailBody,
       email_type: emailType,
       friendly_url: url,
       scenario: selectedScenario.id,
@@ -150,9 +148,43 @@ const GenerateEmail = () => {
       scheduled: false,
       email_sents: 0,
       company: currentCompanyId,
+      email_elements: [
+        {
+          email_subjectline: emailTitle,
+          email_text: emailBody,
+          // Add other fields as needed
+        },
+        // Add more email elements as needed
+      ],
     };
+
     let response = await axiosInstance.post(
       `${BASE_URL}/email_base/email_templates/${currentCompanyId}/`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + String(currentToken),
+        },
+      }
+    );
+    if (response.status === 201) {
+      console.log("DATA CREATED:", response.data);
+      await createElements(response.data.id);
+    } else {
+      console.log("error");
+      setLoading(false);
+    }
+  };
+
+  const createElements = async (document_id) => {
+    const data = {
+      email_subjectline: emailTitle,
+      email_text: emailBody,
+    };
+    //try {
+    let response = await axiosInstance.post(
+      `${BASE_URL}/email_base/email_elements/${document_id}`,
       data,
       {
         headers: {
@@ -168,6 +200,9 @@ const GenerateEmail = () => {
       console.log("error");
       setLoading(false);
     }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -252,7 +287,10 @@ const GenerateEmail = () => {
                 </select>
               </div>
             </div>
-            <button className="bg-green-500 text-white" onClick={promtp_request}>
+            <button
+              className="bg-green-500 text-white"
+              onClick={promtp_request}
+            >
               {!loading ? <p>Generate</p> : <p>Processing..</p>}
             </button>
           </div>
