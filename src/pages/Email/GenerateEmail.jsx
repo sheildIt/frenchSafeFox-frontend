@@ -103,16 +103,13 @@ const GenerateEmail = () => {
           {
             role: "user",
             content: `Write me an email without subjectline for ${selectedDepartemnt.department_name} department in ${currentCompany} company based on the following rules:
-            "In order to do this right you need to do the following:"
-              1. In case there is a link in the scenario insert that as well so that it fits in a subtle way dont use any paranthesis ${selectedScenario.link_field}.
+            
+              1. Insert this link: ${url} in a subtle way dont use any paranthesis.
               2. Signing off from email use ${selectedScenario.POI}
               3. After every 3rd sentance create an empty row space between next 3 sentances.
               4. When finishing off write that in new line with at least 4 empty rows between last sentance and the signoff.  
             
-            And here is the prompt below you need to base this email off The email should be written in a ${emailType} style.
-
-            "${selectedScenario.scenario}".
-              
+            The email theme is: ${selectedScenario.scenario}. The email should be written in a ${emailType} style.  
               `,
           },
         ],
@@ -169,7 +166,6 @@ const GenerateEmail = () => {
       }
     );
     if (response.status === 201) {
-      console.log("DATA CREATED:", response.data);
       await createElements(response.data.id);
     } else {
       console.log("error");

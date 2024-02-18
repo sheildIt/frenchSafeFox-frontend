@@ -6,11 +6,11 @@ const DepartmentsList = ({ departments }) => {
 
   return (
     <div className="flex flex-col rounded-md shadow-2xl">
-      <p className="text-2xl font-bold text-white">
+      <p className="text-xl xl:text-2xl font-bold text-white">
         Performance by departments
       </p>
-      <div className="p-5 mt-5 bg-purpleBlue rounded-lg w-[450px] h-[250px] xl:h-[300px] xl:w-[600px]">
-        <div className="flex flex-row mb-2 xl:text-xl text-white">
+      <div className="p-5 mt-5 bg-purpleBlue rounded-2xl w-[500px] h-72 xl:h-96 xl:w-[650px]">
+        <div className="flex flex-row mb-2 font-semibold text-normal xl:text-2xl text-white">
           <div className="flex-1">Name</div>
           <div className="flex-1">Employees</div>
           <div className="flex-1">Incidents</div>
@@ -20,7 +20,7 @@ const DepartmentsList = ({ departments }) => {
           return (
             <div
               key={department.id}
-              className="flex flex-row mb-2 text-white/50"
+              className="flex flex-row mb-2 text-white/50 text-normal xl:text-lg"
             >
               <div className="flex-1">{department.department_name}</div>
               <div className="flex-1">{department.number_of_employees}</div>

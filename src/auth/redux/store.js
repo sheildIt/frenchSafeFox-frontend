@@ -5,6 +5,7 @@ import authSlice from "./authSlice";
 import companyReducer from "./companyReducer";
 import departmentsReducer from "./departmentsReducer";
 import templateReducer from "./templateReducer";
+import analyticsReducer from "./analyticsReducer";
 
 const persistConfig = {
   key: "root",
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   company: companyReducer,
   departments: departmentsReducer,
   templates: templateReducer,
+  analytics: analyticsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

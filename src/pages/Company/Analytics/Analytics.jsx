@@ -1,19 +1,27 @@
-const Analytics = () => {
+import PieChart from "../../../components/ChartComponent/PieChart";
+
+const Analytics = ({ analytics }) => {
   return (
     <div className="flex flex-row rounded-md">
-      <div className="flex-none p-5 bg-lightPurple rounded-lg w-56 h-64 xl:w-64 xl:h-80 shadow-2xl mt-2">
-        <p>Security index</p>
-        <p>img</p>
-        <p>incidents:12</p>
+      <div className="flex-none p-5 bg-lightPurple rounded-2xl w-56 h-72 xl:w-72 xl:h-96 shadow-2xl mt-2">
+        <p className="text-white font-bold text-normal xl:text-2xl mb-5">
+          Security index
+        </p>
+        <PieChart percentage={22} />
+        <p className="text-white font-semibold text-normal xl:text-xl">
+          Incidents:12
+        </p>
       </div>
 
       <div className="flex flex-col gap-3 ml-5 mt-2 w-[100%]">
-        <div className="flex flex-row w-60 h-[28.5%] xl:w-[100%] xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
+        <div className="flex flex-row w-64 h-[31%] xl:w-80 xl:h-[31.5%] bg-purpleBlue rounded-2xl p-2 relative shadow-2xl">
           <div className="flex flex-col">
-            <p className="text-xl text-white xl:text-2xl text-white font-light text-justify">
+            <p className="text-xl text-white xl:text-2xl font-semibold text-justify">
               Total Emails
             </p>
-            <p className="text-3xl text-white xl:text-5xl font-normal text-justify">123</p>
+            <p className="text-3xl text-white xl:text-5xl font-light text-justify">
+              {analytics.total_email_sents}
+            </p>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,12 +38,14 @@ const Analytics = () => {
             />
           </svg>
         </div>
-        <div className="flex flex-row w-60 h-[28.5%] xl:w-68 xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
+        <div className="flex flex-row w-64 h-[31%] xl:w-80 xl:h-[31.5%] bg-purpleBlue rounded-2xl p-2 relative shadow-2xl">
           <div className="flex flex-col">
-            <p className="text-xl text-white xl:text-2xl text-white font-light text-justify">
-              Incident report
+            <p className="text-xl text-white xl:text-2xl font-semibold text-justify">
+              Reported emails
             </p>
-            <p className="text-3xl text-white xl:text-5xl font-normal text-justify">123</p>
+            <p className="text-3xl text-white xl:text-5xl font-light text-justify">
+              {analytics.total_reported_emails}
+            </p>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -52,12 +62,14 @@ const Analytics = () => {
             />
           </svg>
         </div>
-        <div className="flex flex-row w-60 h-[28.5%] xl:w-68 xl:h-[29.5%] bg-purpleBlue rounded-lg p-2 relative shadow-2xl">
+        <div className="flex flex-row w-64 h-[31%] xl:w-80 xl:h-[31.5%] bg-purpleBlue rounded-2xl p-2 relative shadow-2xl">
           <div className="flex flex-col">
-            <p className="text-xl  xl:text-2xl text-white font-light">
+            <p className="text-xl  xl:text-2xl text-white font-semibold">
               Total Users
             </p>
-            <p className="text-3xl text-white xl:text-5xl font-normal text-justify">58</p>
+            <p className="text-3xl text-white xl:text-5xl font-light text-justify">
+              {analytics.total_employees}
+            </p>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"

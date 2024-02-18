@@ -8,7 +8,7 @@ import {
   setCredentials,
   logOut,
 } from "../redux/authSlice";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { config } from "../../constants/constants";
 
 const useAxiosInstance = () => {

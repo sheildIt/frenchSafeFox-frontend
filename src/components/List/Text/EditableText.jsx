@@ -10,12 +10,11 @@ const EditableText = ({ initialText, onSave }) => {
     setText(event.target.value);
   };
   const handleBlur = () => {
-    console.log("BLURED?");
     setIsEditing(false);
     onSave(text);
     // Save the changes or perform any required actions here
   };
-  console.log(text);
+
   return (
     <div onDoubleClick={handleDoubleClick}>
       {isEditing ? (

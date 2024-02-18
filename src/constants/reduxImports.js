@@ -4,6 +4,7 @@ import { selectCurrentToken, selectCurrentUser } from "../auth/redux/authSlice";
 import { selectCompany, selectCompanyId } from "../auth/redux/companyReducer";
 import { selectDepartmentList } from "../auth/redux/departmentsReducer";
 import { selectTemplate } from "../auth/redux/templateReducer";
+import { selectAnalytics } from "../auth/redux/analyticsReducer";
 
 export const useRedux = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ export const useRedux = () => {
   const currentCompanyId = useSelector(selectCompanyId);
   const currentDepartmentList = useSelector(selectDepartmentList);
   const currentTemplateList = useSelector(selectTemplate);
+  const currentAnalyticsData = useSelector(selectAnalytics);
 
   return {
     dispatch,
@@ -22,5 +24,6 @@ export const useRedux = () => {
     currentCompanyId,
     currentDepartmentList,
     currentTemplateList,
+    currentAnalyticsData,
   };
 };

@@ -4,6 +4,7 @@ import { useRedux } from "../../constants/reduxImports";
 import { useNavigate } from "react-router-dom";
 import { setCompanyCredentials } from "../../auth/redux/companyReducer";
 import { setDepartments } from "../../auth/redux/departmentsReducer";
+import { setAnalyticsData } from "../../auth/redux/analyticsReducer";
 import useAxiosInstance from "../../auth/axios/axiosInstance";
 import { config } from "../../constants/constants";
 
@@ -64,6 +65,7 @@ const AuthModal = ({ showModal, onClose, company }) => {
 
         dispatch(setCompanyCredentials({ ...company.company }));
         dispatch(setDepartments({ ...company.departments }));
+
         navigate(`/home`);
         setShow(false);
 

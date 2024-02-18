@@ -9,7 +9,7 @@ import CompanyRegister from "../components/Modal/CompanyRegister";
 
 const CompanyView = () => {
   const [companies, setCompanies] = useState([]);
-  const { dispatch, currentToken } = useRedux();
+  const { dispatch } = useRedux();
   const navigate = useNavigate();
   const axiosInstance = useAxiosInstance();
   const [show, setShow] = useState(false);
@@ -26,14 +26,7 @@ const CompanyView = () => {
   const getCompanies = async () => {
     try {
       let response = await axiosInstance.get(
-        "http://localhost:8000/company/get/",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + String(currentToken),
-          },
-        }
+        "http://localhost:8000/company/get/"
       );
 
       if (response.status === 200) {
@@ -55,14 +48,7 @@ const CompanyView = () => {
     setSelectedCompany(company);
     try {
       const departmentResponse = await axiosInstance.get(
-        `http://localhost:8000/company/get_departments/${company.id}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + String(currentToken),
-          },
-        }
+        `http://localhost:8000/company/get_departments/${company.id}`
       );
 
       if (departmentResponse.status === 200) {

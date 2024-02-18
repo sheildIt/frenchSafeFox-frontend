@@ -30,7 +30,7 @@ const DraftModal = ({ confirmLeave, showModal, email_obj }) => {
       setEmailObj(response.data[0]);
     }
   };
-  console.log(emailObj);
+
   return (
     <div
       className={`fixed inset-0 ${
@@ -71,7 +71,7 @@ const DraftModal = ({ confirmLeave, showModal, email_obj }) => {
                 Open Editor
               </Link>
               <Link
-                to={`/send_email?uuid=${email_obj?.id}&subject=${emailObj?.email_text}&message=${emailObj?.email_text}`}
+                to={`/send_email?uuid=${email_obj?.id}&subject=${emailObj?.email_subjectline}&message=${emailObj?.email_text}`}
                 className="bg-creme text-grayLight px-2 py-1 rounded-lg"
               >
                 Send

@@ -26,23 +26,23 @@ const NewsComponent = ({ viewType }) => {
   return (
     <div className="flex flex-col">
       {viewType === "Overview" ? (
-        <p className="text-2xl font-bold text-white">News</p>
+        <p className="text-xl xl:text-2xl font-bold text-white">News</p>
       ) : (
         <p></p>
       )}
       {viewType === "Overview" ? (
-        <ul className="flex flex-col mt-5 bg-purpleBlue w-[250px] h-[250px] xl:h-[300px] shadow-xl p-2 gap-2 rounded-lg">
+        <ul className="flex flex-col mt-5 bg-purpleBlue w-[270px] h-72 xl:h-96 xl:w-[350px] shadow-xl p-2 gap-2 rounded-2xl">
           {news.map((newItem) => {
             return (
               <div
                 key={newItem.id}
-                className="max-w-sm w-30 h-20 lg:max-w-full lg:flex bg-mainBlue rounded-xl hover:bg-purple-600 cursor-pointer duration-200"
+                className="max-w-sm h-52 lg:max-w-full lg:flex bg-mainBlue rounded-2xl hover:bg-purple-600 cursor-pointer duration-200"
               >
                 <div className="p-2 mb-2 flex-col justify-between leading-normal">
-                  <div className="text-creme font-normal text-sm mb-2">
+                  <div className="text-white font-normal text-sm xl:text-lg mb-2">
                     {newItem.title}
                   </div>
-                  <p className="text-white/50 text-xs">
+                  <p className="text-white/50 text-xs xl:text-base">
                     {truncateText(newItem.body, 40)}
                   </p>
                 </div>
