@@ -34,7 +34,7 @@ const GenerateEmail = () => {
   useEffect(() => {
     getScenarios();
   }, []);
-
+  console.log(currentDepartmentList);
   const handleTemplate = (e) => {
     setEmailTemplate(e.target.value);
   };
@@ -270,13 +270,13 @@ const GenerateEmail = () => {
                   required
                 >
                   <option value={JSON.stringify(allSelection)}>All</option>
-                  {currentDepartmentList.departments.map((department) => {
+                  {currentDepartmentList.map((department) => {
                     return (
                       <option
                         key={department.id}
                         value={JSON.stringify(department)}
                       >
-                        {department.department_name}
+                        {department.progress.department.department_name}
                       </option>
                     );
                   })}

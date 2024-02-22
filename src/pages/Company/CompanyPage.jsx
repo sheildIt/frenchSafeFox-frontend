@@ -31,9 +31,10 @@ const CompanyPage = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedItems = liveEmails?.slice(startIndex, endIndex);
-
+  console.log(currentDepartmentList);
   useEffect(() => {
     fetchLiveEmails();
+
     if (currentAnalyticsData.stored === false) {
       fetchAnalytics();
     }
@@ -113,7 +114,7 @@ const CompanyPage = () => {
         </div>
 
         <div className="text-justify">
-          <DepartmentList departments={currentDepartmentList.departments} />
+          <DepartmentList departments={currentDepartmentList} />
         </div>
 
         <div className="text-justify">

@@ -92,7 +92,7 @@ const Employees = () => {
       <div className="flex-1">
         <div className="flex flex-row relative">
           <div className="flex flex-row text-justify relative">
-            <h2 className="text-3xl text-white flex flex-row ml-2 font-normal">
+            <h2 className="text-2xl xl:text-3xl text-white flex flex-row ml-2 font-semibold">
               Employees |
               <p className="text-lightPurple ml-2">{currentCompany}</p>
             </h2>
@@ -100,9 +100,9 @@ const Employees = () => {
             Refresh
           </div> */}
           </div>
-          <div className="flex flex-row items-center bg-purpleBlue rounded-lg absolute right-0 shadow-2xl w-[30%]">
+          <div className="flex flex-row items-center bg-purpleBlue rounded-2xl absolute right-0 shadow-2xl w-[28%] xl:w-[26.5%]">
             <input
-              className="bg-mainBlue rounded-lg p-1.5 ml-0.5 w-[50%]"
+              className="bg-mainBlue rounded-2xl p-1.5 ml-0.5 w-[50%]"
               placeholder="Search by name.."
             />
             <button
@@ -170,10 +170,10 @@ const Employees = () => {
 
         <div
           className={`mainContainer transition-width overflow-none ${
-            openContact ? "w-[68%]" : "w-full"
+            openContact ? "w-[68%] xl:w-[70%]" : "w-full"
           }`}
         >
-          <div className="flex text-white flex-col w-full mt-10 p-5 bg-purpleBlue rounded-xl h-[400px] shadow-2xl">
+          <div className="flex text-white flex-col w-full mt-10 p-5 bg-purpleBlue rounded-2xl h-[400px] shadow-2xl">
             <div className="flex flex-row mb-2 w-full">
               <div className="flex-1 text-white/50">#ID</div>
               <div className="flex-1 text-white/50">First Name</div>
@@ -252,7 +252,7 @@ const Employees = () => {
         <div
           className={`absolute top-[115px] right-0 h-[526px] w-[365px] xl:h-[648px] xl:w-[440px] shadow-2xl bg-purpleBlue rounded-2xl transition-transform transform ${
             openContact
-              ? "xl:-translate-x-22 -translate-x-[11%]"
+              ? "xl:-translate-x-[9%] -translate-x-[10%]"
               : "translate-x-full"
           }`}
         >

@@ -48,7 +48,7 @@ const CompanyView = () => {
     setSelectedCompany(company);
     try {
       const departmentResponse = await axiosInstance.get(
-        `http://localhost:8000/company/get_departments/${company.id}`
+        `http://localhost:8000/company/get_department_progress/${company.id}`
       );
 
       if (departmentResponse.status === 200) {

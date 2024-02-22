@@ -13,7 +13,7 @@ const DepartmentsList = ({ departments }) => {
         <div className="flex flex-row mb-2 font-semibold text-normal xl:text-2xl text-white">
           <div className="flex-1">Name</div>
           <div className="flex-1">Employees</div>
-          <div className="flex-1">Incidents</div>
+          <div className="flex-1">Reported emails</div>
         </div>
         {/* eslint-disable-next-line react/prop-types */}
         {departments?.map((department) => {
@@ -22,9 +22,13 @@ const DepartmentsList = ({ departments }) => {
               key={department.id}
               className="flex flex-row mb-2 text-white/50 text-normal xl:text-lg"
             >
-              <div className="flex-1">{department.department_name}</div>
-              <div className="flex-1">{department.number_of_employees}</div>
-              <div className="flex-1">tba</div>
+              <div className="flex-1">
+                {department.progress.department.department_name}
+              </div>
+              <div className="flex-1">
+                {department.progress.department.number_of_employees}
+              </div>
+              <div className="flex-1">{department.progress.reported}</div>
             </div>
           );
         })}

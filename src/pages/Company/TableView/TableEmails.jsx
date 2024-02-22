@@ -4,7 +4,7 @@ import "./TableList.css";
 const TableEmails = ({ emails }) => {
   console.log(emails);
   return (
-    <div className="flex-1 bg-purpleBlue rounded-lg shadow-2xl h-[150px] xl:h-[200px]">
+    <div className="flex-1 bg-purpleBlue rounded-2xl shadow-2xl h-[150px] xl:h-[200px]">
       <div className="table">
         <div className="flex flex-row text-white p-2 ml-2 text-sm xl:text-base">
           <div className="flex-1">Theme</div>
@@ -18,7 +18,7 @@ const TableEmails = ({ emails }) => {
           return (
             <div
               key={email.id}
-              className={`flex flex-row mb-2  ${rowClassName} rounded-lg py-2 mx-3 text-white/50 text-sm xl:text-base`}
+              className={`flex flex-row mb-2  ${rowClassName} rounded-2xl py-2 mx-3 text-white/50 text-sm xl:text-base`}
             >
               <div className="flex-1">{email.email_theme}</div>
               <div className="flex-1">{email.created_at}</div>

@@ -39,7 +39,7 @@ const ScenarioPage = () => {
     <div className="flex-1 p-10">
       <div className="flex-1 h-28">
         <div className="flex flex-row text-justify relative">
-          <h2 className="text-3xl text-white flex flex-row ml-2 font-normal">
+          <h2 className="text-2xl xl:text-3xl text-white flex flex-row ml-2 font-normal">
             Prompt automation |
             <p className="text-lightPurple ml-2">{currentCompany}</p>
           </h2>

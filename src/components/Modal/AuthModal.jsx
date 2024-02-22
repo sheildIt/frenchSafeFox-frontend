@@ -21,7 +21,7 @@ const AuthModal = ({ showModal, onClose, company }) => {
   const handleCode = (e) => {
     setCode(e.target.value);
   };
-
+  console.log(company);
   const handleClose = (e) => {
     onClose();
     setShow(false);

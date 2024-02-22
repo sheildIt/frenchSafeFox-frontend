@@ -20,7 +20,7 @@ const Analytics = ({ analytics }) => {
               Total Emails
             </p>
             <p className="text-3xl text-white xl:text-5xl font-light text-justify">
-              {analytics.total_email_sents}
+              {analytics.total_email_sents ?? 0}
             </p>
           </div>
           <svg
@@ -44,7 +44,7 @@ const Analytics = ({ analytics }) => {
               Reported emails
             </p>
             <p className="text-3xl text-white xl:text-5xl font-light text-justify">
-              {analytics.total_reported_emails}
+              {analytics.total_reported_emails ?? 0}
             </p>
           </div>
           <svg
@@ -68,7 +68,7 @@ const Analytics = ({ analytics }) => {
               Total Users
             </p>
             <p className="text-3xl text-white xl:text-5xl font-light text-justify">
-              {analytics.total_employees}
+              {analytics.total_employees ?? 0}
             </p>
           </div>
           <svg
