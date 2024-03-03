@@ -34,7 +34,7 @@ const GenerateEmail = () => {
   useEffect(() => {
     getScenarios();
   }, []);
-  console.log(currentDepartmentList);
+
   const handleTemplate = (e) => {
     setEmailTemplate(e.target.value);
   };
